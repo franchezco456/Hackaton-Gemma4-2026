@@ -889,3 +889,121 @@ html, body {
 .full-width {
     width: 100%;
 }
+
+/* --------------------------------------------------------------------------
+   6. INTERACTIVE NODE DETAILS & SUBGRAPH MODAL SYSTEM
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-card {
+    background: #FFFFFF;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    width: 540px;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    animation: modalSlideUp 0.18s ease-out;
+}
+
+@keyframes modalSlideUp {
+    from { transform: translateY(12px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FAFAFA;
+}
+
+.modal-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-close-btn {
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+}
+
+.modal-close-btn:hover {
+    background: #F1F5F9;
+    color: var(--text-primary);
+}
+
+.modal-body {
+    padding: 18px;
+    overflow-y: auto;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.node-info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.node-info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 12px;
+    background: #F8FAFC;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+}
+
+.node-info-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.node-info-val {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.node-properties-box {
+    margin-top: 12px;
+    background: #F8FAFC;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+}
+
+.node-properties-box h4 {
+    font-size: 0.78rem;
+    color: var(--primary-blue);
+    margin-bottom: 6px;
+    font-weight: 600;
+}

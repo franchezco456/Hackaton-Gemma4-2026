@@ -40,6 +40,10 @@
 |:---:|:---:|
 | ![Documentos & Métricas](assets/3.png) | ![Reporte PDF Typst APA 7](assets/4.png) |
 
+| **5. Grafo de Conocimiento con Subgrafos Conectados** | **6. Modal de Inspección Interactiva de Nodo** |
+|:---:|:---:|
+| ![Grafo Interactivo con nodos conectados](assets/5.png) | ![Modal de Inspección de Nodo OKF](assets/6.png) |
+
 ---
 
 ## 📋 Requisitos del Sistema y Prerrequisitos

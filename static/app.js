@@ -133,6 +133,42 @@ async function loadKnowledgeGraph(view) {
     }
 }
 
+function createCustomNodeTooltip(n) {
+    const tooltip = document.createElement('div');
+    tooltip.style.padding = '10px 14px';
+    tooltip.style.background = '#FFFFFF';
+    tooltip.style.border = '1px solid #CBD5E1';
+    tooltip.style.borderRadius = '8px';
+    tooltip.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+    tooltip.style.fontFamily = 'Inter, sans-serif';
+    tooltip.style.fontSize = '12px';
+    tooltip.style.color = '#0F172A';
+    tooltip.style.lineHeight = '1.5';
+    tooltip.style.maxWidth = '280px';
+    tooltip.style.wordBreak = 'break-word';
+    tooltip.style.overflowWrap = 'break-word';
+    tooltip.style.whiteSpace = 'normal';
+
+    const isPriv = n.security_level === 'PRIVATE';
+    const badgeText = isPriv ? '🔒 PRIVADO' : '🌐 PÚBLICO';
+    const badgeColor = isPriv ? '#DC2626' : '#16A34A';
+    const badgeBg = isPriv ? '#FEE2E2' : '#DCFCE7';
+
+    tooltip.innerHTML = `
+        <div style="font-weight: 700; font-size: 13px; color: #0F172A; margin-bottom: 6px; display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; word-break: break-word;">
+            <span style="flex: 1; word-break: break-word;">${n.label}</span>
+            <span style="font-size: 10px; background: ${badgeBg}; color: ${badgeColor}; padding: 2px 7px; border-radius: 99px; font-weight: 700; white-space: nowrap; flex-shrink: 0;">${badgeText}</span>
+        </div>
+        <div style="color: #475569; font-size: 11px; word-break: break-word;">
+            <div><strong>Tipo:</strong> ${n.type || 'Entidad'}</div>
+            <div><strong>Cluster Graphify:</strong> Grupo ${n.community || 0}</div>
+            <div style="word-break: break-word; margin-top: 2px;"><strong>Origen:</strong> 📄 ${n.source_doc || 'General'}</div>
+        </div>
+    `;
+
+    return tooltip;
+}
+
 function renderVisNetwork(graphifyObj) {
     const container = document.getElementById('visNetworkCanvas');
     if (!container) return;
@@ -153,21 +189,23 @@ function renderVisNetwork(graphifyObj) {
 
         const nodeDegree = n.degree || 1;
         const nodeMargin = Math.min(8 + nodeDegree * 2, 20);
+        const displayLabel = n.label.length > 24 ? n.label.substring(0, 22) + '…' : n.label;
 
         return {
             id: n.id,
-            label: iconSymbol + n.label,
+            label: iconSymbol + displayLabel,
             shape: isOrg ? 'diamond' : (isDoc ? 'ellipse' : 'box'),
             margin: nodeMargin,
+            widthConstraint: { maximum: 160 },
             color: {
                 background: baseBg,
                 border: borderColor,
                 highlight: { background: '#1E293B', border: '#2563EB' }
             },
-            font: { color: fontColor, face: 'Inter', size: 12, bold: true },
+            font: { color: fontColor, face: 'Inter', size: 11, bold: true },
             borderWidth: 1.5,
             shadow: { enabled: true, color: 'rgba(0,0,0,0.12)', size: 4, x: 1, y: 2 },
-            title: `<b>${n.label}</b><br/>Comunidad Graphify: Cluster ${n.community}<br/>Tipo: ${n.type}<br/>Seguridad: ${n.badge || n.security_level}<br/>Origen: ${n.source_doc}`
+            title: createCustomNodeTooltip(n)
         };
     });
 
@@ -209,29 +247,149 @@ function renderVisNetwork(graphifyObj) {
     });
 }
 
+let selectedNodeData = null;
+let isSubgraphFocused = false;
+
 function showNodeDetailsModal(node) {
+    selectedNodeData = node;
+    const overlay = document.getElementById('nodeModalOverlay');
+    const badgeEl = document.getElementById('nodeModalBadge');
+    const titleEl = document.getElementById('nodeModalTitle');
+    const bodyEl = document.getElementById('nodeModalBody');
+    const focusBtn = document.getElementById('btnFocusSubgraph');
+
+    if (!overlay || !bodyEl) return;
+
     const isPrivate = node.security_level === 'PRIVATE';
-    const badge = isPrivate ? '🔒 PRIVADO CONFIDENCIAL' : '🌐 PÚBLICO';
-    
-    let propsHTML = '';
-    for (const [k, v] of Object.entries(node.properties || {})) {
-        propsHTML += `<div><strong>${k}:</strong> ${v}</div>`;
+    const secClass = isPrivate ? 'private' : 'public';
+    const secLabel = isPrivate ? '🔒 PRIVADO CONFIDENCIAL' : '🌐 PÚBLICO';
+
+    if (badgeEl) {
+        badgeEl.className = `doc-badge ${secClass}`;
+        badgeEl.innerText = secLabel;
     }
 
-    const detailText = `
-### ${node.label} (${node.type})
-- **Comunidad Graphify:** Cluster ${node.community || 0}
-- **Clasificación:** ${badge}
-- **Grado de Conexión:** ${node.degree || 1}
-- **Resumen:** ${node.summary || 'Sin resumen'}
-- **Documento Origen:** \`${node.source_doc || 'General'}\`
-#### Propiedades Estructuradas Graphify:
-${propsHTML}
+    if (titleEl) {
+        titleEl.innerText = `📌 ${node.label} (${node.type || 'ENTIDAD'})`;
+    }
+
+    // Contar conexiones reales en el grafo actual
+    const rawLinks = graphifyData ? (graphifyData.links || graphifyData.edges || []) : [];
+    const connectedCount = rawLinks.filter(e => e.source === node.id || e.target === node.id).length;
+    const hasEnoughData = connectedCount > 1 && !isSubgraphFocused;
+
+    if (focusBtn) {
+        if (hasEnoughData) {
+            focusBtn.style.display = 'inline-flex';
+            focusBtn.innerText = `🕸️ Ver Subgrafo Conectado (${connectedCount})`;
+        } else {
+            focusBtn.style.display = 'none';
+        }
+    }
+
+    let propsHTML = '';
+    for (const [k, v] of Object.entries(node.properties || {})) {
+        propsHTML += `<div class="node-info-row"><span class="node-info-label">${k}:</span><span class="node-info-val">${v}</span></div>`;
+    }
+
+    bodyEl.innerHTML = `
+        <div class="node-info-grid">
+            <div class="node-info-row">
+                <span class="node-info-label">Clasificación OKF:</span>
+                <span class="node-info-val">${secLabel}</span>
+            </div>
+            <div class="node-info-row">
+                <span class="node-info-label">Comunidad Graphify:</span>
+                <span class="node-info-val">Cluster ${node.community || 0}</span>
+            </div>
+            <div class="node-info-row">
+                <span class="node-info-label">Relaciones Conectadas:</span>
+                <span class="node-info-val">${connectedCount} aristas activas</span>
+            </div>
+            <div class="node-info-row">
+                <span class="node-info-label">Documento Origen:</span>
+                <span class="node-info-val">📄 ${node.source_doc || 'General'}</span>
+            </div>
+        </div>
+
+        <div class="node-properties-box">
+            <h4>📝 Resumen y Atributos Estructurados:</h4>
+            <p style="margin-bottom: 8px;">${node.summary || 'Sin resumen disponible'}</p>
+            ${propsHTML ? `<div class="node-info-grid">${propsHTML}</div>` : ''}
+            ${!hasEnoughData && !isSubgraphFocused ? `<p style="color: #64748B; font-size: 0.72rem; margin-top: 8px; font-style: italic;">⚠️ Información escasa: El nodo posee conexiones aisladas (${connectedCount}). Se desactiva la generación de subgrafo secundario.</p>` : ''}
+        </div>
     `;
 
-    // Switch to chat view to inspect details
+    overlay.classList.add('active');
+}
+
+function closeNodeModal() {
+    const overlay = document.getElementById('nodeModalOverlay');
+    if (overlay) overlay.classList.remove('active');
+}
+
+function handleModalOverlayClick(e) {
+    if (e.target.id === 'nodeModalOverlay') {
+        closeNodeModal();
+    }
+}
+
+function triggerFocusSubgraph() {
+    if (!selectedNodeData) return;
+    closeNodeModal();
+    focusNodeSubgraph(selectedNodeData.id);
+}
+
+function focusNodeSubgraph(targetNodeId) {
+    if (!graphifyData) return;
+
+    const rawNodes = graphifyData.nodes || [];
+    const rawLinks = graphifyData.links || graphifyData.edges || [];
+
+    const connectedEdges = rawLinks.filter(e => e.source === targetNodeId || e.target === targetNodeId);
+    
+    const neighborNodeIds = new Set([targetNodeId]);
+    connectedEdges.forEach(e => {
+        neighborNodeIds.add(e.source);
+        neighborNodeIds.add(e.target);
+    });
+
+    const subNodes = rawNodes.filter(n => neighborNodeIds.has(n.id));
+
+    // Control de información escasa o excesiva recursividad
+    if (connectedEdges.length <= 1 || subNodes.length <= 1) {
+        alert(`⚠️ Información escasa: El nodo '${selectedNodeData ? selectedNodeData.label : targetNodeId}' no posee suficientes conexiones para aislar un subgrafo.`);
+        return;
+    }
+
+    isSubgraphFocused = true;
+
+    // Renderizar subgrafo directo sin recursión
+    renderVisNetwork({ nodes: subNodes, links: connectedEdges });
+
+    const resetBtn = document.getElementById('btnResetSubgraph');
+    if (resetBtn) resetBtn.style.display = 'inline-flex';
+
+    const subtitle = document.getElementById('graphSubtitle');
+    if (subtitle) {
+        subtitle.innerText = `🎯 Subgrafo enfocado en '${selectedNodeData.label}' (${subNodes.length} nodos relacionados)`;
+        subtitle.style.color = 'var(--primary-blue)';
+    }
+}
+
+function resetNodeSubgraphFilter() {
+    isSubgraphFocused = false;
+    const resetBtn = document.getElementById('btnResetSubgraph');
+    if (resetBtn) resetBtn.style.display = 'none';
+    loadKnowledgeGraph(currentView);
+}
+
+function triggerAskAgentAboutNode() {
+    if (!selectedNodeData) return;
+    const label = selectedNodeData.label;
+    closeNodeModal();
     switchNavSection('chat');
-    appendSystemMessage(detailText);
+    sendQuickQuery(`¿Qué información de Recursos Humanos existe sobre ${label}?`);
 }
 
 // 4. Sidebar Section Switcher

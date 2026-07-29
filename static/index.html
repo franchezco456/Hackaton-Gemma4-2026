@@ -85,6 +85,7 @@
                             <span id="graphSubtitle" class="subtitle">Vista Privada: Muestra nómina confidencial y beneficios</span>
                         </div>
                         <div class="toolbar-actions">
+                            <button id="btnResetSubgraph" class="btn btn-secondary btn-sm" style="display: none;" onclick="resetNodeSubgraphFilter()">🌐 Ver Grafo Completo</button>
                             <div class="tabs-group">
                                 <button id="tabVisualGraph" class="tab-btn active" onclick="switchMainTab('visual')">🎨 Grafo Interactivo</button>
                                 <button id="tabGoogleOKF" class="tab-btn" onclick="switchMainTab('google_okf')">📦 Google OKF Schema</button>
@@ -282,6 +283,33 @@
             </section>
 
         </main>
+    </div>
+
+    <!-- MODAL DE INFORMACIÓN Y NAVEGACIÓN DE SUBGRAFO DEL NODO -->
+    <div id="nodeModalOverlay" class="modal-overlay" onclick="handleModalOverlayClick(event)">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span id="nodeModalBadge" class="doc-badge"></span>
+                    <h3 id="nodeModalTitle" style="font-family: var(--font-heading); font-size: 1rem; font-weight: 700;">Detalles del Nodo</h3>
+                </div>
+                <button class="modal-close-btn" onclick="closeNodeModal()">✕</button>
+            </div>
+            <div class="modal-body" id="nodeModalBody">
+                <!-- Se llena dinámicamente con app.js -->
+            </div>
+            <div class="modal-footer" style="padding: 12px 16px; border-top: 1px solid var(--border-subtle); display: flex; gap: 8px; justify-content: flex-end; background: #FAFAFA;">
+                <button id="btnFocusSubgraph" class="btn btn-primary btn-sm" onclick="triggerFocusSubgraph()">
+                    🕸️ Ver Subgrafo Conectado
+                </button>
+                <button id="btnAskAgentNode" class="btn btn-secondary btn-sm" onclick="triggerAskAgentAboutNode()">
+                    💬 Preguntar al Agente Gemma
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="closeNodeModal()">
+                    Cerrar
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="/static/app.js"></script>
