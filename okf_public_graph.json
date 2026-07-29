@@ -1,0 +1,229 @@
+{
+  "graph_metadata": {
+    "name": "Grafo de Conocimiento OKF - Recursos Humanos (RRHH) PYME",
+    "schema_version": "okf-v1.0",
+    "domain": "Gestión Humana y Recursos Humanos (RRHH) PYME",
+    "generated_by": "Engine Gemma (gemma4:2b)",
+    "created_at": "2026-07-29T21:00:19.817018+00:00",
+    "total_nodes": 11,
+    "total_edges": 7,
+    "public_nodes": 11,
+    "private_nodes": 11,
+    "public_edges": 10,
+    "private_edges": 11,
+    "view_type": "PUBLIC_CLIENT_ONLY",
+    "note": "Nodos y aristas confidenciales ocultados por estricta seguridad OKF/Graphify."
+  },
+  "nodes": [
+    {
+      "id": "node_org_rrhh_techsol",
+      "label": "Departamento de Recursos Humanos (RRHH) - TechSoluciones",
+      "type": "ORGANIZATION",
+      "security_level": "PUBLIC",
+      "properties": {
+        "department": "Gestión Humana y Recursos Humanos (RRHH)",
+        "head_of_hr": "Laura Gómez (Directora de RRHH)",
+        "email": "rrhh@techsoluciones.com.co",
+        "phone": "+57 (601) 555-0199 Ext 102",
+        "hours": "Lunes a Viernes 8:00 AM - 5:00 PM"
+      },
+      "source_doc": "Sistema / General RRHH",
+      "summary": "Área de gestión humana encargada de nómina, beneficios, contratos y clima laboral."
+    },
+    {
+      "id": "node_doc_nuevo_plan_mascota_2026",
+      "label": "📄 Nuevo Plan Mascota 2026",
+      "type": "DOCUMENT",
+      "security_level": "PUBLIC",
+      "properties": {
+        "filename": "Nuevo_Plan_Mascota_2026.pdf",
+        "character_count": 643,
+        "preview": "================================================================================ NUEVA POLÃTICA DE PLAN ODONTOLÃGICO Y VACACIONES DE ADOPCIÃN 2026 ================================="
+      },
+      "source_doc": "Nuevo_Plan_Mascota_2026.pdf",
+      "summary": "Documento PDF de Recursos Humanos 'Nuevo Plan Mascota 2026' procesado en el Grafo OKF."
+    },
+    {
+      "id": "node_doc_politica_acoso_y_codigo_conducta",
+      "label": "📄 Politica Acoso y Codigo Conducta",
+      "type": "DOCUMENT",
+      "security_level": "PUBLIC",
+      "properties": {
+        "filename": "Politica_Acoso_y_Codigo_Conducta.pdf",
+        "character_count": 880,
+        "preview": "================================================================================ CÃDIGO DE CONDUCTA LABORAL Y POLÃTICA DE PREVENCIÃN DE ACOSO (RRHH) ==============================="
+      },
+      "source_doc": "Politica_Acoso_y_Codigo_Conducta.pdf",
+      "summary": "Documento PDF de Recursos Humanos 'Politica Acoso y Codigo Conducta' procesado en el Grafo OKF."
+    },
+    {
+      "id": "node_doc_manual_empleado_y_beneficios_pyme",
+      "label": "📄 Manual Empleado y Beneficios PYME",
+      "type": "DOCUMENT",
+      "security_level": "PUBLIC",
+      "properties": {
+        "filename": "Manual_Empleado_y_Beneficios_PYME.pdf",
+        "character_count": 1625,
+        "preview": "================================================================================ MANUAL DEL EMPLEADO Y PROGRAMA DE BENEFICIOS DE RECURSOS HUMANOS (RRHH) 2025 ======================"
+      },
+      "source_doc": "Manual_Empleado_y_Beneficios_PYME.pdf",
+      "summary": "Documento PDF de Recursos Humanos 'Manual Empleado y Beneficios PYME' procesado en el Grafo OKF."
+    },
+    {
+      "id": "node_ben_flex_manual_empleado_y_beneficios_pyme",
+      "label": "Horario Flexible y Trabajo Híbrido",
+      "type": "BENEFIT",
+      "security_level": "PUBLIC",
+      "properties": {
+        "schedule": "8:00 AM a 5:00 PM",
+        "remote_days": "2 días a la semana",
+        "eligibility": "Empleados a término indefinido"
+      },
+      "source_doc": "Manual_Empleado_y_Beneficios_PYME.pdf",
+      "summary": "Beneficio laboral de trabajo remoto híbrido y flexibilidad de horario."
+    },
+    {
+      "id": "node_ben_health_manual_empleado_y_beneficios_pyme",
+      "label": "Seguro Médico Prepagado 100%",
+      "type": "BENEFIT",
+      "security_level": "PUBLIC",
+      "properties": {
+        "provider": "SaludTotal Plan Excelencia",
+        "coverage": "100% cubierto por la empresa",
+        "includes": "Atención médica, especialista y odontología"
+      },
+      "source_doc": "Manual_Empleado_y_Beneficios_PYME.pdf",
+      "summary": "Póliza de medicina prepagada cubierta en su totalidad por la PYME."
+    },
+    {
+      "id": "node_ben_vacations_manual_empleado_y_beneficios_pyme",
+      "label": "Vacaciones (15 Días) y Cumpleaños Libre",
+      "type": "POLICY",
+      "security_level": "PUBLIC",
+      "properties": {
+        "vacation_days": "15 días hábiles remunerados al año",
+        "birthday_off": "1 día libre remunerado en el cumpleaños",
+        "education_stipend": "$500 USD anuales para capacitación"
+      },
+      "source_doc": "Manual_Empleado_y_Beneficios_PYME.pdf",
+      "summary": "Política de vacaciones anuales, auxilio educativo y día de cumpleaños."
+    },
+    {
+      "id": "node_doc_politica_vacaciones_publica_test",
+      "label": "📄 Politica Vacaciones Publica Test",
+      "type": "DOCUMENT",
+      "security_level": "PUBLIC",
+      "properties": {
+        "filename": "Politica_Vacaciones_Publica_Test.pdf",
+        "character_count": 30,
+        "preview": "Politica de Vacaciones Publica"
+      },
+      "source_doc": "Politica_Vacaciones_Publica_Test.pdf",
+      "summary": "Documento PDF de Recursos Humanos 'Politica Vacaciones Publica Test' procesado en el Grafo OKF."
+    },
+    {
+      "id": "node_ben_flex_manual_del_empleado",
+      "label": "Horario Flexible y Trabajo Híbrido",
+      "type": "BENEFIT",
+      "security_level": "PUBLIC",
+      "properties": {
+        "schedule": "8:00 AM a 5:00 PM",
+        "remote_days": "2 días a la semana",
+        "eligibility": "Empleados a término indefinido"
+      },
+      "source_doc": "Manual-del-Empleado.pdf",
+      "summary": "Beneficio laboral de trabajo remoto híbrido y flexibilidad de horario."
+    },
+    {
+      "id": "node_ben_health_manual_del_empleado",
+      "label": "Seguro Médico Prepagado 100%",
+      "type": "BENEFIT",
+      "security_level": "PUBLIC",
+      "properties": {
+        "provider": "SaludTotal Plan Excelencia",
+        "coverage": "100% cubierto por la empresa",
+        "includes": "Atención médica, especialista y odontología"
+      },
+      "source_doc": "Manual-del-Empleado.pdf",
+      "summary": "Póliza de medicina prepagada cubierta en su totalidad por la PYME."
+    },
+    {
+      "id": "node_ben_vacations_manual_del_empleado",
+      "label": "Vacaciones (15 Días) y Cumpleaños Libre",
+      "type": "POLICY",
+      "security_level": "PUBLIC",
+      "properties": {
+        "vacation_days": "15 días hábiles remunerados al año",
+        "birthday_off": "1 día libre remunerado en el cumpleaños",
+        "education_stipend": "$500 USD anuales para capacitación"
+      },
+      "source_doc": "Manual-del-Empleado.pdf",
+      "summary": "Política de vacaciones anuales, auxilio educativo y día de cumpleaños."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_org_doc_nuevo_plan_mascota_2026",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_nuevo_plan_mascota_2026",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Documento de RRHH Nuevo_Plan_Mascota_2026.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_org_doc_politica_acoso_y_codigo_conducta",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_politica_acoso_y_codigo_conducta",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Documento de RRHH Politica_Acoso_y_Codigo_Conducta.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_org_doc_manual_empleado_y_beneficios_pyme",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_manual_empleado_y_beneficios_pyme",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Documento de RRHH Manual_Empleado_y_Beneficios_PYME.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_doc_b1_manual_empleado_y_beneficios_pyme",
+      "source": "node_doc_manual_empleado_y_beneficios_pyme",
+      "target": "node_ben_flex_manual_empleado_y_beneficios_pyme",
+      "relation": "OFFERS_BENEFIT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "El manual del empleado otorga el beneficio de trabajo híbrido."
+    },
+    {
+      "id": "edge_doc_b2_manual_empleado_y_beneficios_pyme",
+      "source": "node_doc_manual_empleado_y_beneficios_pyme",
+      "target": "node_ben_health_manual_empleado_y_beneficios_pyme",
+      "relation": "OFFERS_BENEFIT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Póliza de salud prepagada otorgada a los empleados."
+    },
+    {
+      "id": "edge_doc_b3_manual_empleado_y_beneficios_pyme",
+      "source": "node_doc_manual_empleado_y_beneficios_pyme",
+      "target": "node_ben_vacations_manual_empleado_y_beneficios_pyme",
+      "relation": "GOVERNED_BY_POLICY",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Política pública de descansos y vacaciones."
+    },
+    {
+      "id": "edge_org_doc_politica_vacaciones_publica_test",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_politica_vacaciones_publica_test",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Documento de RRHH Politica_Vacaciones_Publica_Test.pdf registrado en la organización."
+    }
+  ]
+}

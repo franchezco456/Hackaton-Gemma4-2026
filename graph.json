@@ -1,0 +1,554 @@
+{
+  "graphify_meta": {
+    "generator": "Graphify Engine (graphify.net v1.2)",
+    "created_at": "2026-07-29T21:00:19.819135+00:00",
+    "view": "PRIVATE",
+    "total_nodes": 22,
+    "total_links": 21,
+    "communities_count": 6
+  },
+  "nodes": [
+    {
+      "id": "node_org_rrhh_techsol",
+      "label": "Departamento de Recursos Humanos (RRHH) - TechSoluciones",
+      "type": "ORGANIZATION",
+      "security_level": "PUBLIC",
+      "community": 0,
+      "degree": 9,
+      "source_doc": "Sistema / General RRHH",
+      "properties": {
+        "department": "Gestión Humana y Recursos Humanos (RRHH)",
+        "head_of_hr": "Laura Gómez (Directora de RRHH)",
+        "email": "rrhh@techsoluciones.com.co",
+        "phone": "+57 (601) 555-0199 Ext 102",
+        "hours": "Lunes a Viernes 8:00 AM - 5:00 PM"
+      },
+      "summary": "Área de gestión humana encargada de nómina, beneficios, contratos y clima laboral.",
+      "badge": "🌐 PÚBLICO"
+    },
+    {
+      "id": "node_doc_nomina_salarios_y_evaluaciones_2025",
+      "label": "📄 Nomina Salarios y Evaluaciones 2025",
+      "type": "DOCUMENT",
+      "security_level": "PRIVATE",
+      "community": 5,
+      "degree": 6,
+      "source_doc": "Nomina_Salarios_y_Evaluaciones_2025.pdf",
+      "properties": {
+        "filename": "Nomina_Salarios_y_Evaluaciones_2025.pdf",
+        "character_count": 1612,
+        "preview": "================================================================================ NÃMINA SALARIAL, BONOS Y EVALUACIONES DE DESEMPEÃO CONFIDENCIALES 2025 ============================"
+      },
+      "summary": "Documento PDF de Recursos Humanos 'Nomina Salarios y Evaluaciones 2025' procesado en el Grafo OKF.",
+      "badge": "🔒 PRIVADO"
+    },
+    {
+      "id": "node_emp_juan_martinez",
+      "label": "Juan Pablo Martínez (Gerente Operaciones)",
+      "type": "PERSON",
+      "security_level": "PRIVATE",
+      "community": 2,
+      "degree": 1,
+      "source_doc": "Nomina_Salarios_y_Evaluaciones_2025.pdf",
+      "properties": {
+        "role": "Gerente de Operaciones y Logística",
+        "monthly_salary": "$4,800 USD / mes",
+        "performance_bonus_q1": "$8,000 USD",
+        "evaluation_score": "95/100 (Sobresaliente)"
+      },
+      "summary": "Gerente operativo con datos salariales y evaluación de desempeño privada.",
+      "badge": "🔒 PRIVADO"
+    },
+    {
+      "id": "node_emp_laura_gomez",
+      "label": "Laura Gómez (Directora RRHH)",
+      "type": "PERSON",
+      "security_level": "PRIVATE",
+      "community": 2,
+      "degree": 1,
+      "source_doc": "Nomina_Salarios_y_Evaluaciones_2025.pdf",
+      "properties": {
+        "role": "Directora de Recursos Humanos (RRHH)",
+        "monthly_salary": "$3,900 USD / mes",
+        "retention_bonus": "$3,500 USD",
+        "evaluation_score": "98/100 (Excelente)"
+      },
+      "summary": "Directora de Gestión Humana con salario y bonificaciones privadas.",
+      "badge": "🔒 PRIVADO"
+    },
+    {
+      "id": "node_emp_andres_silva",
+      "label": "Andrés Felipe Silva (Dev Senior)",
+      "type": "PERSON",
+      "security_level": "PRIVATE",
+      "community": 2,
+      "degree": 1,
+      "source_doc": "Nomina_Salarios_y_Evaluaciones_2025.pdf",
+      "properties": {
+        "role": "Desarrollador Senior de Software",
+        "monthly_salary": "$3,200 USD / mes",
+        "projected_raise_2025": "12%"
+      },
+      "summary": "Ingeniero de software con compensación salarial confidencial.",
+      "badge": "🔒 PRIVADO"
+    },
+    {
+      "id": "node_fin_hr_budget_nomina_salarios_y_evaluaciones_2025",
+      "label": "Presupuesto Anual de Nómina 2025",
+      "type": "FINANCIAL_RECORD",
+      "security_level": "PRIVATE",
+      "community": 3,
+      "degree": 1,
+      "source_doc": "Nomina_Salarios_y_Evaluaciones_2025.pdf",
+      "properties": {
+        "total_payroll_budget": "$280,000 USD anuales",
+        "severance_reserve_fund": "$45,000 USD"
+      },
+      "summary": "Presupuesto maestro confidencial asignado para la nómina de empleados.",
+      "badge": "🔒 PRIVADO"
+    },
+    {
+      "id": "node_person_nomina_salarios_y_evaluaciones_2025_juan_pablo_mart",
+      "label": "Juan Pablo Mart",
+      "type": "PERSON",
+      "security_level": "PRIVATE",
+      "community": 2,
+      "degree": 1,
+      "source_doc": "Nomina_Salarios_y_Evaluaciones_2025.pdf",
+      "properties": {
+        "source_doc": "Nomina_Salarios_y_Evaluaciones_2025.pdf"
+      },
+      "summary": "Persona identificada en el documento de RRHH Nomina_Salarios_y_Evaluaciones_2025.pdf.",
+      "badge": "🔒 PRIVADO"
+    },
+    {
+      "id": "node_doc_william_shakespeare_romeo_y_julieta",
+      "label": "📄 William Shakespeare Romeo y Julieta",
+      "type": "DOCUMENT",
+      "security_level": "PRIVATE",
+      "community": 5,
+      "degree": 1,
+      "source_doc": "William Shakespeare Romeo y Julieta.pdf",
+      "properties": {
+        "filename": "William Shakespeare Romeo y Julieta.pdf",
+        "character_count": 118094,
+        "preview": "\fLibro descargado en www.elejandria.com, tu sitio web de obras de dominio público ¡Esperamos que lo disfrutéis!  William Shakespeare ROMEO Y JULIETA TRADUCCIÓN DE MARCELINO MENÉNDE"
+      },
+      "summary": "Documento PDF de Recursos Humanos 'William Shakespeare Romeo y Julieta' procesado en el Grafo OKF.",
+      "badge": "🔒 PRIVADO"
+    },
+    {
+      "id": "node_doc_nuevo_plan_mascota_2026",
+      "label": "📄 Nuevo Plan Mascota 2026",
+      "type": "DOCUMENT",
+      "security_level": "PUBLIC",
+      "community": 5,
+      "degree": 1,
+      "source_doc": "Nuevo_Plan_Mascota_2026.pdf",
+      "properties": {
+        "filename": "Nuevo_Plan_Mascota_2026.pdf",
+        "character_count": 643,
+        "preview": "================================================================================ NUEVA POLÃTICA DE PLAN ODONTOLÃGICO Y VACACIONES DE ADOPCIÃN 2026 ================================="
+      },
+      "summary": "Documento PDF de Recursos Humanos 'Nuevo Plan Mascota 2026' procesado en el Grafo OKF.",
+      "badge": "🌐 PÚBLICO"
+    },
+    {
+      "id": "node_doc_politica_acoso_y_codigo_conducta",
+      "label": "📄 Politica Acoso y Codigo Conducta",
+      "type": "DOCUMENT",
+      "security_level": "PUBLIC",
+      "community": 5,
+      "degree": 1,
+      "source_doc": "Politica_Acoso_y_Codigo_Conducta.pdf",
+      "properties": {
+        "filename": "Politica_Acoso_y_Codigo_Conducta.pdf",
+        "character_count": 880,
+        "preview": "================================================================================ CÃDIGO DE CONDUCTA LABORAL Y POLÃTICA DE PREVENCIÃN DE ACOSO (RRHH) ==============================="
+      },
+      "summary": "Documento PDF de Recursos Humanos 'Politica Acoso y Codigo Conducta' procesado en el Grafo OKF.",
+      "badge": "🌐 PÚBLICO"
+    },
+    {
+      "id": "node_doc_manual_empleado_y_beneficios_pyme",
+      "label": "📄 Manual Empleado y Beneficios PYME",
+      "type": "DOCUMENT",
+      "security_level": "PUBLIC",
+      "community": 5,
+      "degree": 4,
+      "source_doc": "Manual_Empleado_y_Beneficios_PYME.pdf",
+      "properties": {
+        "filename": "Manual_Empleado_y_Beneficios_PYME.pdf",
+        "character_count": 1625,
+        "preview": "================================================================================ MANUAL DEL EMPLEADO Y PROGRAMA DE BENEFICIOS DE RECURSOS HUMANOS (RRHH) 2025 ======================"
+      },
+      "summary": "Documento PDF de Recursos Humanos 'Manual Empleado y Beneficios PYME' procesado en el Grafo OKF.",
+      "badge": "🌐 PÚBLICO"
+    },
+    {
+      "id": "node_ben_flex_manual_empleado_y_beneficios_pyme",
+      "label": "Horario Flexible y Trabajo Híbrido",
+      "type": "BENEFIT",
+      "security_level": "PUBLIC",
+      "community": 8,
+      "degree": 1,
+      "source_doc": "Manual_Empleado_y_Beneficios_PYME.pdf",
+      "properties": {
+        "schedule": "8:00 AM a 5:00 PM",
+        "remote_days": "2 días a la semana",
+        "eligibility": "Empleados a término indefinido"
+      },
+      "summary": "Beneficio laboral de trabajo remoto híbrido y flexibilidad de horario.",
+      "badge": "🌐 PÚBLICO"
+    },
+    {
+      "id": "node_ben_health_manual_empleado_y_beneficios_pyme",
+      "label": "Seguro Médico Prepagado 100%",
+      "type": "BENEFIT",
+      "security_level": "PUBLIC",
+      "community": 8,
+      "degree": 1,
+      "source_doc": "Manual_Empleado_y_Beneficios_PYME.pdf",
+      "properties": {
+        "provider": "SaludTotal Plan Excelencia",
+        "coverage": "100% cubierto por la empresa",
+        "includes": "Atención médica, especialista y odontología"
+      },
+      "summary": "Póliza de medicina prepagada cubierta en su totalidad por la PYME.",
+      "badge": "🌐 PÚBLICO"
+    },
+    {
+      "id": "node_ben_vacations_manual_empleado_y_beneficios_pyme",
+      "label": "Vacaciones (15 Días) y Cumpleaños Libre",
+      "type": "POLICY",
+      "security_level": "PUBLIC",
+      "community": 6,
+      "degree": 1,
+      "source_doc": "Manual_Empleado_y_Beneficios_PYME.pdf",
+      "properties": {
+        "vacation_days": "15 días hábiles remunerados al año",
+        "birthday_off": "1 día libre remunerado en el cumpleaños",
+        "education_stipend": "$500 USD anuales para capacitación"
+      },
+      "summary": "Política de vacaciones anuales, auxilio educativo y día de cumpleaños.",
+      "badge": "🌐 PÚBLICO"
+    },
+    {
+      "id": "node_doc_contratos_laborales_y_datos_personales",
+      "label": "📄 Contratos Laborales y Datos Personales",
+      "type": "DOCUMENT",
+      "security_level": "PRIVATE",
+      "community": 5,
+      "degree": 2,
+      "source_doc": "Contratos_Laborales_y_Datos_Personales.pdf",
+      "properties": {
+        "filename": "Contratos_Laborales_y_Datos_Personales.pdf",
+        "character_count": 1351,
+        "preview": "================================================================================ EXPEDIENTES DE CONTRATACIÃN Y DATOS PERSONALES DE EMPLEADOS (CONFIDENCIAL) ========================"
+      },
+      "summary": "Documento PDF de Recursos Humanos 'Contratos Laborales y Datos Personales' procesado en el Grafo OKF.",
+      "badge": "🔒 PRIVADO"
+    },
+    {
+      "id": "node_person_contratos_laborales_y_datos_personales_juan_pablo_mart",
+      "label": "Juan Pablo Mart",
+      "type": "PERSON",
+      "security_level": "PRIVATE",
+      "community": 2,
+      "degree": 1,
+      "source_doc": "Contratos_Laborales_y_Datos_Personales.pdf",
+      "properties": {
+        "source_doc": "Contratos_Laborales_y_Datos_Personales.pdf"
+      },
+      "summary": "Persona identificada en el documento de RRHH Contratos_Laborales_y_Datos_Personales.pdf.",
+      "badge": "🔒 PRIVADO"
+    },
+    {
+      "id": "node_doc_politica_vacaciones_publica_test",
+      "label": "📄 Politica Vacaciones Publica Test",
+      "type": "DOCUMENT",
+      "security_level": "PUBLIC",
+      "community": 5,
+      "degree": 1,
+      "source_doc": "Politica_Vacaciones_Publica_Test.pdf",
+      "properties": {
+        "filename": "Politica_Vacaciones_Publica_Test.pdf",
+        "character_count": 30,
+        "preview": "Politica de Vacaciones Publica"
+      },
+      "summary": "Documento PDF de Recursos Humanos 'Politica Vacaciones Publica Test' procesado en el Grafo OKF.",
+      "badge": "🌐 PÚBLICO"
+    },
+    {
+      "id": "node_doc_politica_de_vacaciones",
+      "label": "📄 Politica de Vacaciones",
+      "type": "DOCUMENT",
+      "security_level": "PRIVATE",
+      "community": 5,
+      "degree": 1,
+      "source_doc": "Politica_de_Vacaciones.pdf",
+      "properties": {
+        "filename": "Politica_de_Vacaciones.pdf",
+        "character_count": 10372,
+        "preview": "POLÍTICA DE VACACIONES DIAS DE DESCANSO OBLIGATORIOS FUNDACIÓN SOLIDARIDAD LATINOAMERICANA  \fPOLÍTICA DE VACACIONES La empresa FUNDACIÓN SOLIDARIDAD LATINOAMERICANA, busca de maner"
+      },
+      "summary": "Documento PDF de Recursos Humanos 'Politica de Vacaciones' procesado en el Grafo OKF.",
+      "badge": "🔒 PRIVADO"
+    },
+    {
+      "id": "node_doc_manual_del_empleado",
+      "label": "📄 Manual-del-Empleado",
+      "type": "DOCUMENT",
+      "security_level": "PRIVATE",
+      "community": 5,
+      "degree": 4,
+      "source_doc": "Manual-del-Empleado.pdf",
+      "properties": {
+        "filename": "Manual-del-Empleado.pdf",
+        "character_count": 58747,
+        "preview": "ASOCIACIÓN PRO‐ DESARROLLO COMUNAL DEL PATIO, INC.  Manual del Empleado  Este documento expone a manera de ejemplo genérico los elementos y contenido básico de un Manual del Emplea"
+      },
+      "summary": "Documento PDF de Recursos Humanos 'Manual-del-Empleado' procesado en el Grafo OKF.",
+      "badge": "🔒 PRIVADO"
+    },
+    {
+      "id": "node_ben_flex_manual_del_empleado",
+      "label": "Horario Flexible y Trabajo Híbrido",
+      "type": "BENEFIT",
+      "security_level": "PUBLIC",
+      "community": 8,
+      "degree": 1,
+      "source_doc": "Manual-del-Empleado.pdf",
+      "properties": {
+        "schedule": "8:00 AM a 5:00 PM",
+        "remote_days": "2 días a la semana",
+        "eligibility": "Empleados a término indefinido"
+      },
+      "summary": "Beneficio laboral de trabajo remoto híbrido y flexibilidad de horario.",
+      "badge": "🌐 PÚBLICO"
+    },
+    {
+      "id": "node_ben_health_manual_del_empleado",
+      "label": "Seguro Médico Prepagado 100%",
+      "type": "BENEFIT",
+      "security_level": "PUBLIC",
+      "community": 8,
+      "degree": 1,
+      "source_doc": "Manual-del-Empleado.pdf",
+      "properties": {
+        "provider": "SaludTotal Plan Excelencia",
+        "coverage": "100% cubierto por la empresa",
+        "includes": "Atención médica, especialista y odontología"
+      },
+      "summary": "Póliza de medicina prepagada cubierta en su totalidad por la PYME.",
+      "badge": "🌐 PÚBLICO"
+    },
+    {
+      "id": "node_ben_vacations_manual_del_empleado",
+      "label": "Vacaciones (15 Días) y Cumpleaños Libre",
+      "type": "POLICY",
+      "security_level": "PUBLIC",
+      "community": 6,
+      "degree": 1,
+      "source_doc": "Manual-del-Empleado.pdf",
+      "properties": {
+        "vacation_days": "15 días hábiles remunerados al año",
+        "birthday_off": "1 día libre remunerado en el cumpleaños",
+        "education_stipend": "$500 USD anuales para capacitación"
+      },
+      "summary": "Política de vacaciones anuales, auxilio educativo y día de cumpleaños.",
+      "badge": "🌐 PÚBLICO"
+    }
+  ],
+  "links": [
+    {
+      "id": "edge_org_doc_nomina_salarios_y_evaluaciones_2025",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_nomina_salarios_y_evaluaciones_2025",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PRIVATE",
+      "weight": 1.0,
+      "description": "Documento de RRHH Nomina_Salarios_y_Evaluaciones_2025.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_doc_emp1_nomina_salarios_y_evaluaciones_2025",
+      "source": "node_doc_nomina_salarios_y_evaluaciones_2025",
+      "target": "node_emp_juan_martinez",
+      "relation": "CONTAINS_SALARY_RECORD",
+      "security_level": "PRIVATE",
+      "weight": 1.0,
+      "description": "Registro salarial privado de Juan Pablo Martínez."
+    },
+    {
+      "id": "edge_doc_emp2_nomina_salarios_y_evaluaciones_2025",
+      "source": "node_doc_nomina_salarios_y_evaluaciones_2025",
+      "target": "node_emp_laura_gomez",
+      "relation": "CONTAINS_SALARY_RECORD",
+      "security_level": "PRIVATE",
+      "weight": 1.0,
+      "description": "Registro salarial privado de Laura Gómez."
+    },
+    {
+      "id": "edge_doc_emp3_nomina_salarios_y_evaluaciones_2025",
+      "source": "node_doc_nomina_salarios_y_evaluaciones_2025",
+      "target": "node_emp_andres_silva",
+      "relation": "CONTAINS_SALARY_RECORD",
+      "security_level": "PRIVATE",
+      "weight": 1.0,
+      "description": "Registro salarial privado de Andrés Silva."
+    },
+    {
+      "id": "edge_doc_fin_hr_nomina_salarios_y_evaluaciones_2025",
+      "source": "node_doc_nomina_salarios_y_evaluaciones_2025",
+      "target": "node_fin_hr_budget_nomina_salarios_y_evaluaciones_2025",
+      "relation": "HAS_HR_BUDGET",
+      "security_level": "PRIVATE",
+      "weight": 1.0,
+      "description": "Presupuesto privado de nómina y liquidación de RRHH."
+    },
+    {
+      "id": "edge_doc_person_nomina_salarios_y_evaluaciones_2025_0",
+      "source": "node_doc_nomina_salarios_y_evaluaciones_2025",
+      "target": "node_person_nomina_salarios_y_evaluaciones_2025_juan_pablo_mart",
+      "relation": "MENTIONS_EMPLOYEE",
+      "security_level": "PRIVATE",
+      "weight": 1.0,
+      "description": "Mención de Juan Pablo Mart en Nomina_Salarios_y_Evaluaciones_2025.pdf."
+    },
+    {
+      "id": "edge_org_doc_william_shakespeare_romeo_y_julieta",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_william_shakespeare_romeo_y_julieta",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PRIVATE",
+      "weight": 1.0,
+      "description": "Documento de RRHH William Shakespeare Romeo y Julieta.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_org_doc_nuevo_plan_mascota_2026",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_nuevo_plan_mascota_2026",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Documento de RRHH Nuevo_Plan_Mascota_2026.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_org_doc_politica_acoso_y_codigo_conducta",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_politica_acoso_y_codigo_conducta",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Documento de RRHH Politica_Acoso_y_Codigo_Conducta.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_org_doc_manual_empleado_y_beneficios_pyme",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_manual_empleado_y_beneficios_pyme",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Documento de RRHH Manual_Empleado_y_Beneficios_PYME.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_doc_b1_manual_empleado_y_beneficios_pyme",
+      "source": "node_doc_manual_empleado_y_beneficios_pyme",
+      "target": "node_ben_flex_manual_empleado_y_beneficios_pyme",
+      "relation": "OFFERS_BENEFIT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "El manual del empleado otorga el beneficio de trabajo híbrido."
+    },
+    {
+      "id": "edge_doc_b2_manual_empleado_y_beneficios_pyme",
+      "source": "node_doc_manual_empleado_y_beneficios_pyme",
+      "target": "node_ben_health_manual_empleado_y_beneficios_pyme",
+      "relation": "OFFERS_BENEFIT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Póliza de salud prepagada otorgada a los empleados."
+    },
+    {
+      "id": "edge_doc_b3_manual_empleado_y_beneficios_pyme",
+      "source": "node_doc_manual_empleado_y_beneficios_pyme",
+      "target": "node_ben_vacations_manual_empleado_y_beneficios_pyme",
+      "relation": "GOVERNED_BY_POLICY",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Política pública de descansos y vacaciones."
+    },
+    {
+      "id": "edge_org_doc_contratos_laborales_y_datos_personales",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_contratos_laborales_y_datos_personales",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PRIVATE",
+      "weight": 1.0,
+      "description": "Documento de RRHH Contratos_Laborales_y_Datos_Personales.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_doc_person_contratos_laborales_y_datos_personales_0",
+      "source": "node_doc_contratos_laborales_y_datos_personales",
+      "target": "node_person_contratos_laborales_y_datos_personales_juan_pablo_mart",
+      "relation": "MENTIONS_EMPLOYEE",
+      "security_level": "PRIVATE",
+      "weight": 1.0,
+      "description": "Mención de Juan Pablo Mart en Contratos_Laborales_y_Datos_Personales.pdf."
+    },
+    {
+      "id": "edge_org_doc_politica_vacaciones_publica_test",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_politica_vacaciones_publica_test",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Documento de RRHH Politica_Vacaciones_Publica_Test.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_org_doc_politica_de_vacaciones",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_politica_de_vacaciones",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PRIVATE",
+      "weight": 1.0,
+      "description": "Documento de RRHH Politica_de_Vacaciones.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_org_doc_manual_del_empleado",
+      "source": "node_org_rrhh_techsol",
+      "target": "node_doc_manual_del_empleado",
+      "relation": "CONTAINS_DOCUMENT",
+      "security_level": "PRIVATE",
+      "weight": 1.0,
+      "description": "Documento de RRHH Manual-del-Empleado.pdf registrado en la organización."
+    },
+    {
+      "id": "edge_doc_b1_manual_del_empleado",
+      "source": "node_doc_manual_del_empleado",
+      "target": "node_ben_flex_manual_del_empleado",
+      "relation": "OFFERS_BENEFIT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "El manual del empleado otorga el beneficio de trabajo híbrido."
+    },
+    {
+      "id": "edge_doc_b2_manual_del_empleado",
+      "source": "node_doc_manual_del_empleado",
+      "target": "node_ben_health_manual_del_empleado",
+      "relation": "OFFERS_BENEFIT",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Póliza de salud prepagada otorgada a los empleados."
+    },
+    {
+      "id": "edge_doc_b3_manual_del_empleado",
+      "source": "node_doc_manual_del_empleado",
+      "target": "node_ben_vacations_manual_del_empleado",
+      "relation": "GOVERNED_BY_POLICY",
+      "security_level": "PUBLIC",
+      "weight": 1.0,
+      "description": "Política pública de descansos y vacaciones."
+    }
+  ]
+}

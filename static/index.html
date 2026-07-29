@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Híbrida de Recursos Humanos (RRHH) | Google Cloud OKF & Gemma AI</title>
+    <!-- Google Fonts: Inter, Outfit & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Vis.js Network for Interactive Knowledge Graph -->
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-layout">
+        
+        <!-- 1. LEFT SIDEBAR NAVIGATION PANEL -->
+        <aside class="app-sidebar" id="appSidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                        <polyline points="2 17 12 22 22 17"/>
+                        <polyline points="2 12 12 17 22 12"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h2>HR Assistant IA</h2>
+                    <span>Gemma OKF & Graphify</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="sidebar-nav">
+                <button id="navGraph" class="nav-item active" onclick="switchNavSection('graph')">
+                    <span class="nav-icon">🎨</span>
+                    <span class="nav-label">Grafo Interactivo</span>
+                </button>
+                <button id="navChat" class="nav-item" onclick="switchNavSection('chat')">
+                    <span class="nav-icon">💬</span>
+                    <span class="nav-label">Chatbot IA RRHH</span>
+                    <span class="nav-badge">Dual</span>
+                </button>
+                <button id="navDocs" class="nav-item" onclick="switchNavSection('docs')">
+                    <span class="nav-icon">📁</span>
+                    <span class="nav-label">Documentos & Métricas</span>
+                </button>
+            </nav>
+
+            <!-- Visibility View Switcher -->
+            <div class="sidebar-security-box">
+                <span class="box-title">Modo de Visibilidad:</span>
+                <div class="security-buttons">
+                    <button id="btnViewPrivate" class="sec-btn active private" onclick="setGraphView('private')">
+                        🔒 Privado (gemma4:2b)
+                    </button>
+                    <button id="btnViewPublic" class="sec-btn public" onclick="setGraphView('public')">
+                        🌐 Público (gemma4:31b)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Export Action -->
+            <div class="sidebar-footer">
+                <button class="btn btn-primary full-width" onclick="exportTypstPDFReport()">
+                    📄 Reporte PDF Typst (APA 7)
+                </button>
+                <div class="system-status-indicator" id="systemStatus">
+                    <span class="status-dot online"></span>
+                    <span id="statusText">OKF RRHH Activo</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 2. MAIN WORKSPACE CONTENT CONTAINER -->
+        <main class="app-main-content">
+
+            <!-- SECTION 1: KNOWLEDGE GRAPH WIDESCREEN WORKSPACE -->
+            <section id="sectionGraph" class="workspace-section active">
+                <div class="section-card">
+                    <div class="card-toolbar">
+                        <div class="toolbar-title">
+                            <h2 id="graphTitle">Grafo de Conocimiento de Recursos Humanos (Google Cloud OKF)</h2>
+                            <span id="graphSubtitle" class="subtitle">Vista Privada: Muestra nómina confidencial y beneficios</span>
+                        </div>
+                        <div class="toolbar-actions">
+                            <div class="tabs-group">
+                                <button id="tabVisualGraph" class="tab-btn active" onclick="switchMainTab('visual')">🎨 Grafo Interactivo</button>
+                                <button id="tabGoogleOKF" class="tab-btn" onclick="switchMainTab('google_okf')">📦 Google OKF Schema</button>
+                                <button id="tabGraphifyJSON" class="tab-btn" onclick="switchMainTab('graphify_json')">🕸️ graph.json (Graphify)</button>
+                                <button id="tabReportMD" class="tab-btn" onclick="switchMainTab('report_md')">📋 GRAPH_REPORT.md</button>
+                            </div>
+                            <button class="btn btn-outline btn-sm" onclick="resetGraphView()">🎯 Centrar</button>
+                        </div>
+                    </div>
+
+                    <!-- Canvas View -->
+                    <div id="visualGraphContainer" class="tab-content active">
+                        <div id="visNetworkCanvas" class="network-canvas"></div>
+                        <div class="graph-legend">
+                            <div class="legend-item"><span class="legend-color node-private"></span> 🔒 Privado (Salarios, Nómina, Evaluaciones)</div>
+                            <div class="legend-item"><span class="legend-color node-public"></span> 🌐 Público (Beneficios, Horarios, Vacaciones)</div>
+                            <div class="legend-item"><span class="legend-color node-org"></span> 🏢 Departamento de RRHH / Comunidades</div>
+                        </div>
+                    </div>
+
+                    <!-- Google OKF Schema View -->
+                    <div id="googleOkfContainer" class="tab-content">
+                        <div class="json-header">
+                            <span>Formato Estándar Google Cloud OKF Schema (Open Knowledge Graph Format v1.0)</span>
+                            <button class="btn btn-sm btn-secondary" onclick="copyGoogleOKFJSON()">📋 Copiar Google OKF JSON</button>
+                        </div>
+                        <pre id="googleOkfCode" class="json-code-block"></pre>
+                    </div>
+
+                    <!-- Graphify JSON View -->
+                    <div id="okfJsonContainer" class="tab-content">
+                        <div class="json-header">
+                            <span>Formato Estándar Graphify.net Schema (graph.json)</span>
+                            <button class="btn btn-sm btn-secondary" onclick="copyGraphifyJSON()">📋 Copiar graph.json</button>
+                        </div>
+                        <pre id="okfJsonCode" class="json-code-block"></pre>
+                    </div>
+
+                    <!-- Graphify Report View -->
+                    <div id="graphReportContainer" class="tab-content">
+                        <div class="json-header">
+                            <span>Reporte Ejecutivo de Conocimientos de RRHH (GRAPH_REPORT.md)</span>
+                            <button class="btn btn-sm btn-secondary" onclick="copyGraphReportMD()">📋 Copiar Reporte MD</button>
+                        </div>
+                        <pre id="graphReportCode" class="json-code-block" style="white-space: pre-wrap; font-family: var(--font-body);"></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: DEDICATED CHATBOT IA SECTION -->
+            <section id="sectionChat" class="workspace-section">
+                <div class="section-card chat-workspace-card">
+                    <div class="chat-header-bar">
+                        <div class="chat-header-info">
+                            <div class="agent-avatar" id="agentAvatar">👥</div>
+                            <div>
+                                <h2 id="agentName">Centro de Inteligencia Híbrida de Recursos Humanos</h2>
+                                <p id="agentSubtext">Consulta políticas, beneficios o registros privados de nómina</p>
+                            </div>
+                        </div>
+
+                        <!-- Enhanced Agent Selector (Cloud vs Local vs Dual) -->
+                        <div class="agent-mode-selector">
+                            <span class="selector-label">Seleccionar Motor IA:</span>
+                            <div class="mode-buttons-group">
+                                <button id="btnAgentCloud" class="mode-btn active" onclick="selectChatAgentModel('cloud')">
+                                    ☁️ gemma4:31b-cloud (Público)
+                                </button>
+                                <button id="btnAgentLocal" class="mode-btn" onclick="selectChatAgentModel('local')">
+                                    💻 gemma4:2b (Privado Local)
+                                </button>
+                                <button id="btnAgentDual" class="mode-btn dual-btn" onclick="selectChatAgentModel('dual')">
+                                    ⚡ Modo Comparativo Dual (Híbrido)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Messages Area -->
+                    <div class="chat-messages-container" id="chatMessages">
+                        <div class="message system-welcome">
+                            <div class="msg-avatar">👥</div>
+                            <div class="msg-content">
+                                <p><strong>Bienvenido al Centro de Inteligencia de Recursos Humanos (RRHH) de TechSoluciones.</strong></p>
+                                <p>Puedes interactuar con la IA de gestión humana en tres modos:</p>
+                                <ul>
+                                    <li><strong>☁️ Agente Cloud Público (gemma4:31b-cloud):</strong> Responde consultas de beneficios, horario flexible, vacaciones y código de conducta.</li>
+                                    <li><strong>💻 Agente Local Privado (gemma4:2b):</strong> Responde consultas confidenciales de salarios, bonos, evaluaciones y datos de nómina.</li>
+                                    <li><strong>⚡ Modo Comparativo Dual:</strong> Muestra la evaluación simultánea de ambos agentes con aislamiento estricto de seguridad.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Suggested Prompts Category Bar -->
+                    <div class="chat-prompts-bar">
+                        <span class="prompts-label">Consultas Recomendadas de RRHH:</span>
+                        <div class="prompts-chips">
+                            <button class="chip" onclick="sendQuickQuery('¿Cuáles son los beneficios de salud y horario flexible?')">🌐 Beneficios Públicos</button>
+                            <button class="chip" onclick="sendQuickQuery('¿Cuáles son los salarios y evaluaciones del personal?')">🔒 Salarios y Nómina (Privado)</button>
+                            <button class="chip" onclick="sendQuickQuery('¿Cuál es la política de vacaciones y cumpleaños libre?')">🌴 Vacaciones y Permisos</button>
+                            <button class="chip" onclick="sendQuickQuery('¿Cuáles son los números de cuenta bancaria y cédulas?')">🆔 Cuentas y Cédulas (Privado)</button>
+                        </div>
+                    </div>
+
+                    <!-- Input Bar -->
+                    <div class="chat-input-bar">
+                        <input type="text" id="userQueryInput" placeholder="Escribe tu consulta sobre políticas, salarios o beneficios de personal..." onkeypress="handleKeyPress(event)">
+                        <button id="btnSendQuery" class="btn btn-primary btn-send" onclick="sendUserQuery()">
+                            <span>Enviar Consulta</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: DOCUMENTS & METRICS MANAGER -->
+            <section id="sectionDocs" class="workspace-section">
+                <div class="docs-workspace-grid">
+                    
+                    <!-- Document Management Card -->
+                    <div class="section-card">
+                        <div class="card-toolbar">
+                            <div class="toolbar-title">
+                                <h2>📁 Documentos Ingeridos de Recursos Humanos</h2>
+                                <span class="subtitle">Archivos PDF analizados y serializados en Google Cloud OKF</span>
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="reprocessDocuments()">
+                                🔄 Re-procesar Carpeta
+                            </button>
+                        </div>
+                        <div class="docs-grid-container" id="documentsList">
+                            <div class="loading-spinner">Cargando documentos PDF...</div>
+                        </div>
+                        <div class="card-footer-actions" style="display: flex; gap: 10px; align-items: center; background: #FAFAFA; border-top: 1px solid var(--border-subtle); padding: 12px 14px;">
+                            <input type="file" id="pdfFileInput" accept=".pdf" multiple style="display: none;" onchange="handleFileUpload(event)">
+                            <div style="flex: 1; display: flex; align-items: center; gap: 8px;">
+                                <label for="uploadSecuritySelect" style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); white-space: nowrap;">Visibilidad Al Subir:</label>
+                                <select id="uploadSecuritySelect" style="padding: 7px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); background: #FFFFFF; font-size: 0.78rem; color: var(--text-primary); font-family: var(--font-body); font-weight: 600; flex: 1;">
+                                    <option value="PRIVATE">🔒 Privado (Nómina & Confidencial)</option>
+                                    <option value="PUBLIC">🌐 Público (Beneficios & Políticas)</option>
+                                </select>
+                            </div>
+                            <button id="btnUploadPdf" class="btn btn-primary" onclick="document.getElementById('pdfFileInput').click()">
+                                📤 Subir PDFs
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- OKF Metrics & Architecture Card -->
+                    <div class="section-card">
+                        <div class="card-toolbar">
+                            <div class="toolbar-title">
+                                <h2>📊 Métricas del Grafo de Conocimiento (OKF)</h2>
+                                <span class="subtitle">Esquema Google Cloud Open Knowledge Graph Format v1.0</span>
+                            </div>
+                        </div>
+                        <div class="metrics-dashboard-body">
+                            <div class="metrics-grid">
+                                <div class="metric-card">
+                                    <span class="metric-num" id="metricTotalNodes">0</span>
+                                    <span class="metric-title">Nodos Totales OKF</span>
+                                </div>
+                                <div class="metric-card">
+                                    <span class="metric-num" id="metricTotalEdges">0</span>
+                                    <span class="metric-title">Relaciones (Aristas)</span>
+                                </div>
+                                <div class="metric-card private-card">
+                                    <span class="metric-num" id="metricPrivateNodes">0</span>
+                                    <span class="metric-title">🔒 Nodos Privados</span>
+                                </div>
+                                <div class="metric-card public-card">
+                                    <span class="metric-num" id="metricPublicNodes">0</span>
+                                    <span class="metric-title">🌐 Nodos Públicos</span>
+                                </div>
+                            </div>
+
+                            <div class="architecture-specs">
+                                <h3>Arquitectura Híbrida de Seguridad:</h3>
+                                <div class="spec-box local-spec">
+                                    <h4>💻 Agente Local Privado (gemma4:2b)</h4>
+                                    <p>Procesa registros salariales, nóminas, cuentas bancarias e indemnizaciones sin salida a la red.</p>
+                                </div>
+                                <div class="spec-box cloud-spec">
+                                    <h4>☁️ Agente Cloud Público (gemma4:31b-cloud)</h4>
+                                    <p>Atiende consultas generales de beneficios, vacaciones y reglamentos laborales con guardrails de seguridad.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
