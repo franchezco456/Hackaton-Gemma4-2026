@@ -30,6 +30,18 @@
 
 ---
 
+## 📸 Capturas de la Interfaz y Galería Visual
+
+| **1. Grafo Interactivo Google OKF & Graphify** | **2. Chatbot IA RRHH & Modo Comparativo Dual** |
+|:---:|:---:|
+| ![Grafo Interactivo OKF](assets/1.png) | ![Chatbot IA RRHH - Modo Dual](assets/2.png) |
+
+| **3. Gestor de Documentos & Métricas OKF** | **4. Generador de Reportes PDF Typst (APA 7)** |
+|:---:|:---:|
+| ![Documentos & Métricas](assets/3.png) | ![Reporte PDF Typst APA 7](assets/4.png) |
+
+---
+
 ## 📋 Requisitos del Sistema y Prerrequisitos
 
 ### 1. Sistema Operativo y Binarios del Sistema

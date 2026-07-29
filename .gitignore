@@ -1,0 +1,23 @@
+# Python Bytecode & Environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+ENV/
+
+# System & OS Files
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.swp
+*~
+
+# Temporary Build / Preview Artifacts
+static/reports/page_preview*

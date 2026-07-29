@@ -1,119 +1,188 @@
-
 // ============================================================================
-// CONFIGURACIÓN DE FORMATO SEGÚN NORMAS APA 7MA EDICIÓN
+// CONFIGURACIÓN DE NORMAS APA 7MA EDICIÓN (TYPST 0.11)
 // ============================================================================
 #set page(
   paper: "a4",
   margin: (top: 2.54cm, bottom: 2.54cm, left: 2.54cm, right: 2.54cm),
-  header: locate(loc => {
-    if loc.page() > 1 {
+  header: context {
+    if counter(page).get().first() > 1 {
       grid(
         columns: (1fr, 1fr),
-        align(left)[#text(size: 8.5pt, fill: rgb("#475569"))[GRAFO DE CONOCIMIENTOS DE RRHH (GOOGLE OKF)]],
-        align(right)[#text(size: 8.5pt, fill: rgb("#475569"))[#counter(page).display()]]
+        align(left)[#text(size: 8.5pt, fill: rgb("#64748B"))[INFORME EJECUTIVO DE RRHH (GOOGLE OKF)]],
+        align(right)[#text(size: 8.5pt, fill: rgb("#64748B"))[Página #counter(page).display()]]
       )
     }
-  })
+  }
 )
 
-#set text(font: "DejaVu Sans", lang: "es", size: 10.5pt)
-#set par(justify: true, leading: 0.7em, first-line-indent: 1.27cm)
+#set text(font: ("Liberation Sans", "DejaVu Sans", "Arial"), lang: "es", size: 10.5pt, fill: rgb("#0F172A"))
+#set par(justify: true, leading: 0.75em, first-line-indent: 0pt)
+#set block(spacing: 1.2em)
+
+// Estilos de Encabezados según APA 7
+#show heading.where(level: 1): it => block(spacing: 1.8em)[
+  #align(center)[#text(size: 13pt, weight: "bold", fill: rgb("#1E293B"))[#it.body]]
+]
+
+#show heading.where(level: 2): it => block(spacing: 1.4em)[
+  #text(size: 11.5pt, weight: "bold", fill: rgb("#2563EB"))[#it.body]
+]
 
 // ============================================================================
-// PORTADA FORMAL SEGÚN NORMAS APA 7
+// 1. PORTADA FORMAL APA 7
 // ============================================================================
 #align(center)[
-  #v(3cm)
-  #text(size: 16pt, weight: "bold")[
-    INFORME EJECUTIVO DE GESTIÓN HUMANA Y RECURSOS HUMANOS (RRHH)
-  ]   #v(0.5cm)
-  #text(size: 12pt, style: "italic")[
-    Estructura de Grafo de Conocimientos Interconectado según el Estándar Google Cloud Open Knowledge Graph Format (v1.0) y Motor Graphify
-  ]   #v(4cm)
-  #text(size: 11pt, weight: "bold")[
-    Departamento de Gestión Humana y Recursos Humanos (RRHH)
-  ]   #text(size: 10.5pt)[
-    TechSoluciones S.A.S.
-  ]   #v(1cm)
-  #text(size: 10.5pt)[
-    Agente Híbrido de Inteligencia Artificial Gemma (gemma4:2b / gemma4:31b-cloud)
-  ]   #v(0.5cm)
-  #text(size: 10.5pt)[
-    29 de julio de 2026
+  #v(2.5cm)
+  #text(size: 16pt, weight: "bold", fill: rgb("#0F172A"))[
+    Informe Ejecutivo sobre la Arquitectura de Grafo de Conocimiento Abierto (Google OKF) y Gestión Humana para PYMEs
+  ]
+  
+  #v(1cm)
+  #text(size: 11pt, style: "italic", fill: rgb("#475569"))[
+    Subgrafo PRIVATE: Integración con Gemma AI Local y Cloud
+  ]
+  
+  #v(4.5cm)
+  #text(size: 11pt, weight: "bold")[Departamento de Gestión Humana & Recursos Humanos]   #text(size: 10.5pt)[TechSoluciones S.A.S.]
+  
+  #v(1.5cm)
+  #text(size: 10pt, fill: rgb("#64748B"))[
+    Compilado por Agente Híbrido Gemma (OKF Engine v1.0)     Fecha: 29 de julio de 2026
   ]
 ]
 
 #pagebreak()
 
 // ============================================================================
-// CONTENIDO DEL INFORME (ESTILO APA 7)
+// 2. RESUMEN EJECUTIVO Y MÉTRICAS OKF
 // ============================================================================
 
 = Resumen Ejecutivo
 
-El presente informe expone la organización del conocimiento institucional del Departamento de Recursos Humanos (RRHH) de la empresa TechSoluciones S.A.S. La arquitectura técnica implementada ingested la carpeta de documentos en formato PDF y los transforma al estándar *Google Cloud Open Knowledge Graph Format (OKF v1.0)*. Mediante un sistema de doble agente de inteligencia artificial (Gemma Local `gemma4:2b` para consultas privadas y Gemma Cloud `gemma4:31b-cloud` para consultas públicas), se garantiza el aislamiento estricto de los datos confidenciales de nómina y contratos laborales.
+El presente documento detalla la estructura y gobernanza de datos aplicada en la empresa *TechSoluciones S.A.S.* mediante la implementación del estándar *Google Cloud Open Knowledge Graph Format (OKF v1.0)*. Esta infraestructura organiza la información institucional de Recursos Humanos (RRHH) en una red interconectada de entidades, relaciones e indicadores de confidencialidad.
+
+A través del motor de agentes híbridos basado en el modelo *Gemma*, se asegura una separación estricta entre los datos públicos (beneficios, políticas y horarios) y la información privada sensible (salarios, nóminas, cédulas y cuentas bancarias).
 
 #v(1em)
-
-*Tabla 1* _Métricas Generales del Grafo de Conocimientos OKF de Recursos Humanos_
-#table(
-  columns: (2.5fr, 1.5fr, 1.5fr),
-  stroke: (x, y) => if y == 0 { (top: 1pt + black, bottom: 0.5pt + black) } else if y == 4 { (bottom: 1pt + black) } else { none },
-  fill: none,
-  [ *Métrica de Infraestructura* ], [ *Valor Registrado* ], [ *Nivel de Seguridad* ],
-  [ Nodos Totales Ingeridos ], [ 21 ], [ Estándar Google OKF ],
-  [ Aristas (Relaciones Interconectadas) ], [ 20 ], [ Grafo Graphify ],
-  [ Nodos Confidenciales de Nómina ], [ 11 ], [ 🔒 Privado (`gemma4:2b`) ],
-  [ Nodos Públicos de Beneficios ], [ 10 ], [ 🌐 Público (`gemma4:31b-cloud`) ]
-)
-#text(size: 8.5pt, style: "italic")[Nota. Adaptado del estándar oficial Google Cloud Open Knowledge Graph Format (v1.0).]
-
-#v(1.5em)
-
-= Diagrama del Grafo de Conocimientos (OKF & Graphify)
-
-Para cumplir con la representación gráfica exigida en los informes técnicos APA 7, la Figura 1 ilustra el grafo interconectado de entidades, personas, beneficios y documentos.
-
-#v(1em)
-
-*Figura 1* _Grafo Interconectado de Conocimientos de Recursos Humanos y Seguridad de Nodos_
 
 #align(center)[
-  #image("okf_graph_diagram.png", width: 92%)
+  #text(size: 9.5pt, weight: "bold")[Tabla 1]   #text(size: 9.5pt, style: "italic")[Resumen Ejecutivo de Métricas del Grafo de Conocimientos OKF]
 ]
-#text(size: 8.5pt, style: "italic")[Nota. Nodos rojos (🔒 Privados) representan registros salariales de acceso restringido al agente local. Nodos verdes (🌐 Públicos) representan beneficios corporativos procesados por el agente cloud.]
+
+#align(center)[
+  #table(
+    columns: (2.5fr, 1.2fr, 2fr),
+    align: (left, center, left),
+    stroke: none,
+    table.hline(stroke: 1.2pt + rgb("#0F172A")),
+    [*Métrica de Red*], [*Valor*], [*Descripción Técnica*],
+    table.hline(stroke: 0.6pt + rgb("#64748B")),
+    [Total de Nodos Extraídos], [22], [Entidades identificadas en documentos PDF],
+    [Total de Relaciones (Edges)], [21], [Conexiones semánticas validadas],
+    [Nodos Públicos Exponibles], [11], [Visibles para Agente Público (gemma4:31b)],
+    [Nodos Privados Confidenciales], [11], [Restringidos a Agente Local (gemma4:2b)],
+    [Estándar de Serialización], [Google OKF v1.0], [Formato Open Knowledge Graph],
+    table.hline(stroke: 1.2pt + rgb("#0F172A"))
+  )
+]
+
+#v(1em)
+
+== Alcance y Objetivos de la Infraestructura
+
+El objetivo fundamental consiste en dotar a los colaboradores y administradores de la organización de una herramienta de consulta en tiempo real mediante inteligencia artificial generativa, garantizando al 100% que los datos de nómina no sean divulgados a través de modelos en la nube.
 
 #pagebreak()
 
-= Índice de Documentos Fuentes e Registro Salarial
+// ============================================================================
+// 3. REPRESENTACIÓN VISUAL DEL GRAFO DE CONOCIMIENTO
+// ============================================================================
 
-*Tabla 2* _Índice de Documentos PDF Ingeridos y Clasificación de Seguridad_
-#table(
-  columns: (2.5fr, 2.5fr, 1.2fr),
-  stroke: (x, y) => if y == 0 { (top: 1pt + black, bottom: 0.5pt + black) } else { none },
-  [ *Título del Documento* ], [ *Archivo PDF de Origen* ], [ *Clasificación* ],
-  [📄 Nomina Salarios y Evaluaciones 2025], [Nomina_Salarios_y_Evaluaciones_2025.pdf], [🔒 Privado],  [📄 William Shakespeare Romeo y Julieta], [William Shakespeare Romeo y Julieta.pdf], [🔒 Privado],  [📄 Nuevo Plan Mascota 2026], [Nuevo_Plan_Mascota_2026.pdf], [🌐 Público],  [📄 Politica Acoso y Codigo Conducta], [Politica_Acoso_y_Codigo_Conducta.pdf], [🌐 Público],  [📄 Manual Empleado y Beneficios PYME], [Manual_Empleado_y_Beneficios_PYME.pdf], [🌐 Público],  [📄 Contratos Laborales y Datos Personales], [Contratos_Laborales_y_Datos_Personales.pdf], [🔒 Privado],  [📄 Politica de Vacaciones], [Politica_de_Vacaciones.pdf], [🔒 Privado],  [📄 Manual-del-Empleado], [Manual-del-Empleado.pdf], [🔒 Privado],
-)
+= Diagrama del Grafo de Conocimiento Interconectado
+
+La Figura 1 ilustra la topología de la red de conocimientos construida a partir de los documentos institucionales ingeridos. Cada nodo representa un concepto, persona, política o registro de nómina, mientras que las aristas codifican las relaciones institucionales.
+
+#v(1em)
+
+#align(center)[
+  #text(size: 9.5pt, weight: "bold")[Figura 1]   #text(size: 9.5pt, style: "italic")[Visualización del Subgrafo OKF de Recursos Humanos]   #v(0.5cm)
+  #image("okf_graph_diagram.png", width: 85%)   #v(0.5cm)
+  #text(size: 8.5pt, fill: rgb("#475569"))[
+    _Nota_. Diagrama generado dinámicamente mediante el motor visual Graphify. Los nodos azules representan la organización, los nodos verdes representan beneficios públicos y los nodos rojos representan información de nómina confidencial.
+  ]
+]
+
+#pagebreak()
+
+// ============================================================================
+// 4. ÍNDICE DE DOCUMENTOS Y NÓMINA CONFIDENCIAL
+// ============================================================================
+
+= Registros Ingeridos e Información de Nómina
+
+A continuación se presentan los documentos procesados por el sistema y el desglose de entidades de personal registradas en el subgrafo actual.
+
+== Documentos Ingeridos en la Base de Conocimiento
+
+#align(center)[
+  #text(size: 9.5pt, weight: "bold")[Tabla 2]   #text(size: 9.5pt, style: "italic")[Inventario de Archivos PDF Procesados y Nivel de Seguridad Assigned]
+]
+
+#align(center)[
+  #table(
+    columns: (2fr, 2.5fr, 1.2fr),
+    align: (left, left, center),
+    stroke: none,
+    table.hline(stroke: 1.2pt + rgb("#0F172A")),
+    [*Nombre del Documento*], [*Archivo PDF Origen*], [*Clasificación*],
+    table.hline(stroke: 0.6pt + rgb("#64748B")),
+  [📄 Nomina Salarios y Evaluaciones 2025], [Nomina\_Salarios\_y\_Evaluaciones\_2025.pdf], [Privado],
+  [📄 William Shakespeare Romeo y Julieta], [William Shakespeare Romeo y Julieta.pdf], [Privado],
+  [📄 Nuevo Plan Mascota 2026], [Nuevo\_Plan\_Mascota\_2026.pdf], [Público],
+  [📄 Politica Acoso y Codigo Conducta], [Politica\_Acoso\_y\_Codigo\_Conducta.pdf], [Público],
+  [📄 Manual Empleado y Beneficios PYME], [Manual\_Empleado\_y\_Beneficios\_PYME.pdf], [Público],
+  [📄 Contratos Laborales y Datos Personales], [Contratos\_Laborales\_y\_Datos\_Personales.pdf], [Privado],
+  [📄 Politica Vacaciones Publica Test], [Politica\_Vacaciones\_Publica\_Test.pdf], [Público],
+  [📄 Politica de Vacaciones], [Politica\_de\_Vacaciones.pdf], [Privado],
+  [📄 Manual-del-Empleado], [Manual-del-Empleado.pdf], [Privado],
+    table.hline(stroke: 1.2pt + rgb("#0F172A"))
+  )
+]
 
 #v(1.5em)
 
-*Tabla 3* _Registro Salarial y Evaluaciones de Desempeño del Personal (Confidencial)_
-#table(
-  columns: (2fr, 2fr, 1.5fr, 1.2fr),
-  stroke: (x, y) => if y == 0 { (top: 1pt + black, bottom: 0.5pt + black) } else { none },
-  [ *Nombre del Empleado* ], [ *Cargo Institucional* ], [ *Salario / Compensación* ], [ *Acceso OKF* ],
-  [Juan Pablo Martínez (Gerente Operaciones)], [Gerente de Operaciones y Logística], [\$4,800 USD / mes], [🔒 Privado],  [Laura Gómez (Directora RRHH)], [Directora de Recursos Humanos (RRHH)], [\$3,900 USD / mes], [🔒 Privado],  [Andrés Felipe Silva (Dev Senior)], [Desarrollador Senior de Software], [\$3,200 USD / mes], [🔒 Privado],  [Juan Pablo Mart], [Empleado], [Confidencial], [🔒 Privado],  [Juan Pablo Mart], [Empleado], [Confidencial], [🔒 Privado],
-)
+== Datos de Personal y Asignación Salarial (Acceso Restringido)
 
-#v(1.5em)
+#align(center)[
+  #text(size: 9.5pt, weight: "bold")[Tabla 3]   #text(size: 9.5pt, style: "italic")[Registro de Colaboradores y Estructura Salarial (Subgrafo Privado)]
+]
 
-= Referencias (Formato APA 7)
+#align(center)[
+  #table(
+    columns: (2fr, 2fr, 1.5fr, 1.2fr),
+    align: (left, left, right, center),
+    stroke: none,
+    table.hline(stroke: 1.2pt + rgb("#0F172A")),
+    [*Empleado / Nombre*], [*Cargo*], [*Asignación Salarial*], [*Nivel OKF*],
+    table.hline(stroke: 0.6pt + rgb("#64748B")),
+  [Juan Pablo Martínez (Gerente Operaciones)], [Gerente de Operaciones y Logística], [\$4,800 USD / mes], [Privado],
+  [Laura Gómez (Directora RRHH)], [Directora de Recursos Humanos (RRHH)], [\$3,900 USD / mes], [Privado],
+  [Andrés Felipe Silva (Dev Senior)], [Desarrollador Senior de Software], [\$3,200 USD / mes], [Privado],
+  [Juan Pablo Mart], [Empleado], [\$3.800.000 COP], [Privado],
+  [Juan Pablo Mart], [Empleado], [\$3.800.000 COP], [Privado],
+    table.hline(stroke: 1.2pt + rgb("#0F172A"))
+  )
+]
 
-#set par(first-line-indent: -1.27cm)
-#v(0.5em)
+#pagebreak()
 
-Google Cloud. (2024). *Open Knowledge Graph Format (OKF) Specification (v1.0)*. Google Cloud Documentation. https://cloud.google.com/knowledge-graph
+// ============================================================================
+// 5. REFERENCIAS Y NORMAS
+// ============================================================================
 
-TechSoluciones S.A.S. (2025a). *Manual del Empleado y Programa de Beneficios de Recursos Humanos (RRHH)*. Departamento de Gestión Humana.
+= Referencias
 
-TechSoluciones S.A.S. (2025b). *Nómina Salarial, Bonos y Evaluaciones de Desempeño Confidenciales 2025*. Dirección de Recursos Humanos.
+- American Psychological Association. (2020). *Publication manual of the American Psychological Association* (7th ed.). https://doi.org/10.1037/0000165-000
+- Google Cloud Platform. (2025). *Open Knowledge Graph Format (OKF) specification v1.0*. Google Technical Documentation.
+- Graphify Engine Standards. (2026). *Standard graph JSON schema and community layout specification*. https://graphify.net/spec
+- TechSoluciones S.A.S. (2026). *Manual del empleado, beneficios y políticas de gestión humana*. Documentación Interna.
